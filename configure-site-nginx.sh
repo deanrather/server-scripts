@@ -31,7 +31,7 @@ server {
         root /var/www/$1/public;
         access_log /var/log/nginx/$1-access.log;
 
-        try_files $uri $uri/ /index.php?$uri&$args;
+        try_files \$uri \$uri/ /index.php?\$uri&\$args;
         expires max;
 
         include common.conf;
