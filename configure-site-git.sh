@@ -28,7 +28,7 @@ git init --bare
 # Create the production repo
 DIRECTORY2="/var/www/$1"
 echo -e "changing working directory to $DIRECTORY2";
-cd $DIRECTORY || exit
+cd $DIRECTORY2 || exit
 
 echo -e "unsetting git dir"
 unset GIT_DIR
@@ -37,10 +37,10 @@ echo -e "initing git repo"
 git init
 
 echo -e "setting remote origin"
-git set remote origin $DIRECTORY
+git remote add origin $DIRECTORY
 
 
 # Setup the post-receive hook
-echo -e "setting upo the post-receive hook"
+echo -e "setting up the post-receive hook"
 echo "/home/ubuntu/scripts/git-pull.sh $DIRECTORY2" > "$DIRECTORY/hooks/post-receive"
 
