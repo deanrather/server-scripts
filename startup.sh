@@ -1,6 +1,3 @@
-cd /var/www/gamehub/node/
-nohup node Main.js > output.log &
-
-
+#!/bin/bash
+/home/ubuntu/scripts/startnode.sh &
 /home/ubuntu/.dropbox-dist/dropboxd &
-
