@@ -27,9 +27,9 @@ echo -e "creating the config file"
 cat <<EOF >/etc/nginx/sites-available/$1
 server {
         listen 80;
-        server_name $1;
+        server_name $1 *.$1;
         root /var/www/$1/public;
-        access_log /var/log/nginx/$1-access.log;
+        error_log /var/log/nginx/$1-error.log;
 
         try_files \$uri \$uri/ /index.php?\$uri&\$args;
         expires max;
