@@ -11,8 +11,7 @@ echo "dumping $DBNAME"
 mysqldump -h $DBHOST -u $DBUSER -p$DBPASS $DBNAME --lock-tables=false --skip-comments  > $GITREPO/dbase.sql
 
 
-if
-         [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]
+if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]
 then
 	echo "git-adding and committing"
 	git add dbase.sql

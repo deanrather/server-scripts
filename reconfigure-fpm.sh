@@ -1,3 +1,13 @@
+#!/bin/bash
+
+# Check that the script is being run as sudo
+if [ "$(id -u)" != "0" ]
+then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+
 read -r -d '' FILECONTENT <<'ENDFILECONTENT'
 [www]
 listen = 127.0.0.1:9000
