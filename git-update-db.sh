@@ -16,3 +16,5 @@ mysql --user=gitlog --pass=gitlog $1 < gitlog.sql
 echo -e "Deleting sql dump"
 rm gitlog.sql
 
+echo -e "updating version number"
+mysql --user=gitlog --pass=gitlog "INSERT INTO git_version (`date`) VALUES(UNIX_TIMESTAMP())"

@@ -26,16 +26,22 @@ echo "$1 is currently under maintenance" > "$DIRECTORY/index.php"
 echo -e "creating the config file"
 cat <<EOF >/etc/nginx/sites-available/$1
 server {
-        listen 80;
-        server_name $1;
-        root /var/www/$1/public;
-        access_log /var/log/nginx/$1-access.log;
+    listen 80;
+    server_name $1;
+    root /var/www/$1/public;
+    error_log /var/log/nginx/$1-error.log;
 
-        try_files \$uri \$uri/ /index.php?\$uri&\$args;
-        expires max;
+    try_files \$uri \$uri/ /index.php?\$uri&\$args;
+    expires max;
 
-        include common.conf;
-        include php.conf;
+    include common.conf;
+    include php.conf;
+}
+
+server {
+    listen 80;
+    server_name www.$1;
+    rewrite ^ http://$1\$uri permanent;
 }
 EOF
 

@@ -23,10 +23,11 @@ fi
 
 echo -e "adding domain details to /etc/bind/domain-enabled.conf"
 cat <<EOF >>/etc/bind/domain-enabled.conf
-	zone "$1" {
-	        type master;
-	        file "/etc/bind/domain-enabled/$1.db";
-	};
+zone "$1" {
+    type master;
+    file "/etc/bind/domain-enabled/$1.db";
+};
+
 EOF
 
 echo -e "adding domain conf file to /etc/bind/domain-enabled/"
@@ -42,6 +43,7 @@ cat <<EOF >/etc/bind/domain-enabled/$1.db
 @       IN      NS      ns1.deanrather.com.
 @       IN      NS      ns2.deanrather.com.
 @       IN      A       23.23.215.12
+www     IN      A       23.23.215.12
 ns1     IN      A       23.23.215.12
 EOF
 
