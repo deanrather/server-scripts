@@ -8,8 +8,7 @@ GITREPO=/home/ubuntu/git/gamehub-db
 cd $GITREPO
 
 echo "dumping $DBNAME"
-mysqldump -h $DBHOST -u $DBUSER -p$DBPASS $DBNAME --lock-tables=false --skip-comments  > $GITREPO/dbase.sql
-
+mysqldump -h $DBHOST -u $DBUSER -p$DBPASS $DBNAME --lock-tables=false --skip-comments --ignore-table=$DBNAME.sessions --skip-extended-insert > $GITREPO/dbase.sql
 
 if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]]
 then

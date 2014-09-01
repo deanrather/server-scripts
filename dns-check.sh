@@ -7,4 +7,4 @@ then
    exit 1
 fi
 
-named-check
+named-checkconf
